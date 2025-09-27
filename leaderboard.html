@@ -1,0 +1,118 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stylish Leaderboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+<style>
+body {
+    margin: 0;
+    font-family: 'Orbitron', sans-serif;
+    background: url('bg2.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 2rem;
+}
+.container {
+    width: 100%;
+    max-width: 900px;
+    backdrop-filter: blur(10px);
+    background: rgba(0,0,0,0.5);
+    border-radius: 20px;
+    padding: 2rem;
+}
+h1 {
+    text-align: center;
+    font-size: 3rem;
+    background: linear-gradient(90deg, #ff4d4d, #ffd11a, #ff9900, #1a99ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 2rem;
+}
+.leaderboard {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+}
+.rank-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.5rem;
+    border-radius: 1.5rem;
+    backdrop-filter: blur(15px);
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 0 20px rgba(0,0,0,0.7);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.rank-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 25px #fff, 0 0 50px #ff4d4d, 0 0 75px #1a99ff;
+}
+.rank {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+.player-name {
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+.score {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+.first {background: linear-gradient(90deg, #ff0000, #ff6666); box-shadow: 0 0 25px #ff0000;}
+.second {background: linear-gradient(90deg, #ffd11a, #ffff66); box-shadow: 0 0 25px #ffd11a;}
+.third {background: linear-gradient(90deg, #ff9900, #ffcc66); box-shadow: 0 0 25px #ff9900;}
+.other {background: linear-gradient(90deg, #1a99ff, #66ccff); box-shadow: 0 0 15px #1a99ff;}
+@media screen and (max-width: 768px) {
+    .rank-card {padding: 1rem;}
+    h1 {font-size: 2.2rem;}
+    .rank {font-size: 1.5rem;}
+    .player-name, .score {font-size: 1.2rem;}
+}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>🔥 Leaderboard 🔥</h1>
+<div class="leaderboard">
+    <div class="rank-card first">
+        <div class="rank">1</div>
+        <div class="player-name">PlayerOne</div>
+        <div class="score">200</div>
+    </div>
+    <div class="rank-card second">
+        <div class="rank">2</div>
+        <div class="player-name">PlayerTwo</div>
+        <div class="score">150</div>
+    </div>
+    <div class="rank-card third">
+        <div class="rank">3</div>
+        <div class="player-name">PlayerThree</div>
+        <div class="score">120</div>
+    </div>
+    <div class="rank-card other">
+        <div class="rank">4</div>
+        <div class="player-name">PlayerFour</div>
+        <div class="score">100</div>
+    </div>
+    <div class="rank-card other">
+        <div class="rank">5</div>
+        <div class="player-name">PlayerFive</div>
+        <div class="score">90</div>
+    </div>
+    <div class="rank-card other">
+        <div class="rank">6</div>
+        <div class="player-name">PlayerSix</div>
+        <div class="score">80</div>
+    </div>
+</div>
+</div>
+</body>
+</html>

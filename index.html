@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Register | Street-Fighters</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+<style>
+body {
+    margin:0;
+    font-family:'Orbitron', sans-serif;
+    background:url('bg2.jpg') no-repeat center center/cover;
+    background-size: cover;
+    color:#fff;
+    transition: background 0.3s,color 0.3s;
+}
+body.dark { background:#111; color:#eee; }
+
+header {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:10px 20px;
+    background:rgba(0,0,0,0.8);
+    position:sticky;
+    top:0;
+    z-index:1000;
+    box-shadow:0 0 15px #ff4757;
+}
+header h1 {
+    margin:0;
+    font-size:1.4rem;
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+header h1 img {
+    height:34px;
+    border-radius:6px;
+    vertical-align:middle;
+}
+.menu-toggle { font-size:1.8rem; cursor:pointer; color:#fff; user-select:none; }
+nav { display:none; flex-direction:column; background:rgba(0,0,0,0.9); position:absolute; top:50px; right:10px; border-radius:10px; padding:1rem; min-width:180px; box-shadow:0 0 15px #ff4757; }
+nav a, nav button { margin:6px 0; color:#fff; text-decoration:none; font-weight:bold; padding:6px; border-radius:6px; text-align:center; transition:0.3s; }
+nav a:hover, nav button:hover { background:#ff4757; transform:scale(1.05); }
+nav.active { display:flex; }
+.dark-toggle { margin-top:5px; background:#333; border:none; color:#fff; cursor:pointer; font-size:0.9rem; padding:6px; }
+@media(min-width:800px){
+    nav { display:flex !important; position:static; flex-direction:row; background:transparent; gap:14px; padding:0; box-shadow:none; }
+    .menu-toggle { display:none; }
+}
+
+.register-section {
+    max-width:700px;
+    margin:50px auto;
+    background:rgba(20,20,20,0.85);
+    padding:30px;
+    border-radius:12px;
+    box-shadow:0 0 25px #ff4757;
+    animation: fadeIn 1s ease-in-out;
+}
+.register-section h1 {
+    text-align:center;
+    margin-bottom:25px;
+    font-size:2rem;
+    background: linear-gradient(90deg, #FFD700, #FF8C00, #FF4500, #ffffff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 8px rgba(255,140,0,0.8);
+}
+.register-section form { display:flex; flex-direction:column; gap:12px; }
+.register-section label { margin-top:10px; font-weight:bold; }
+.register-section input, .register-section select, .register-section textarea {
+    padding:10px; border-radius:6px; border:1px solid #444; background:#1a1a1a; color:#fff; font-size:0.95rem;
+}
+.register-section button {
+    background:#ff4757; border:none; padding:12px; border-radius:8px; color:#fff; font-size:1rem; cursor:pointer; margin-top:15px; transition:0.3s;
+}
+.register-section button:hover { background:#ff6b81; transform:translateY(-2px); }
+
+.qr-section { text-align:center; margin:15px 0; }
+.qr-section img { width:150px; height:150px; border:2px solid #ff4757; border-radius:10px; }
+
+@keyframes fadeIn { from{opacity:0; transform:translateY(-20px);} to{opacity:1; transform:translateY(0);} }
+.hidden { display:none; }
+</style>
+</head>
+<body>
+<header>
+    <h1><img src="LOGO.jpg" alt="Logo"> Street Fighters</h1>
+    <span class="menu-toggle" onclick="toggleMenu()">☰</span>
+    <nav id="menu">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="rules.html">Rules</a>
+        <a href="register.html" class="active">Register</a>
+        <a href="members.html">Members</a>
+        <a href="contact.html">Contact</a>
+        <button class="dark-toggle" onclick="toggleDarkMode()">🌙 Dark Mode</button>
+    </nav>
+</header>
+
+<section class="register-section">
+<h1>Register Your Squad</h1>
+<form id="registerForm">
+
+<label>Squad Name / Title:</label>
+<input type="text" name="squad_name" required placeholder="For solo matches, enter a nickname">
+
+<label>Team Logo:</label>
+<input type="file" name="team_logo" accept="image/*">
+
+<label>Game Option:</label>
+<select id="gameOption" name="game_option" required>
+    <option value="">Select Game</option>
+    <option value="SOLO-15">Solo Match ₹15</option>
+    <option value="BR-200">Battle Royale ₹200</option>
+    <option value="CS-100">Clash Squad ₹100</option>
+</select>
+
+<div id="soloBlock" class="hidden">
+    <label>Player Name (Solo):</label>
+    <input type="text" id="playerName" name="player_name">
+</div>
+
+<div id="teamBlock">
+    <label>Teammate 1 Name:</label>
+    <input type="text" id="teammate1" name="teammate1" required>
+    <label>Teammate 2 Name:</label>
+    <input type="text" id="teammate2" name="teammate2" required>
+    <label>Teammate 3 Name:</label>
+    <input type="text" id="teammate3" name="teammate3" required>
+    <label>Teammate 4 Name:</label>
+    <input type="text" id="teammate4" name="teammate4">
+</div>
+
+<label>Email:</label>
+<input type="email" name="email" required>
+<label>Phone:</label>
+<input type="tel" name="phone" required>
+
+<label>State:</label>
+<select id="state" name="state" required>
+    <option value="">Select State</option>
+    <option value="Andhra Pradesh">Andhra Pradesh</option>
+    <option value="Assam">Assam</option>
+    <option value="Bihar">Bihar</option>
+    <option value="Chhattisgarh">Chhattisgarh</option>
+    <option value="Goa">Goa</option>
+    <option value="Gujarat">Gujarat</option>
+    <option value="Haryana">Haryana</option>
+    <option value="Himachal Pradesh">Himachal Pradesh</option>
+    <option value="Jharkhand">Jharkhand</option>
+    <option value="Karnataka">Karnataka</option>
+    <option value="Kerala">Kerala</option>
+    <option value="Madhya Pradesh">Madhya Pradesh</option>
+    <option value="Maharashtra">Maharashtra</option>
+    <option value="Manipur">Manipur</option>
+    <option value="Meghalaya">Meghalaya</option>
+    <option value="Mizoram">Mizoram</option>
+    <option value="Nagaland">Nagaland</option>
+    <option value="Odisha">Odisha</option>
+    <option value="Punjab">Punjab</option>
+    <option value="Rajasthan">Rajasthan</option>
+    <option value="Sikkim">Sikkim</option>
+    <option value="Tamil Nadu">Tamil Nadu</option>
+    <option value="Telangana">Telangana</option>
+    <option value="Tripura">Tripura</option>
+    <option value="Uttar Pradesh">Uttar Pradesh</option>
+    <option value="Uttarakhand">Uttarakhand</option>
+    <option value="West Bengal">West Bengal</option>
+</select>
+
+<label>City:</label>
+<select id="city" name="city" required>
+    <option value="">Select City</option>
+</select>
+
+<label>Address:</label>
+<textarea name="address" rows="3" required></textarea>
+
+<label>UTR Number:</label>
+<input type="text" id="utr" name="utr" required placeholder="Enter UTR Number">
+
+<div class="qr-section">
+    <p>Scan this QR to pay:</p>
+    <img src="QR1.jpg" alt="QR Code">
+</div>
+
+<button type="submit" id="submitBtn" disabled>Submit Registration</button>
+</form>
+</section>
+
+<script>
+// Menu & dark mode
+function toggleMenu(){ document.getElementById('menu').classList.toggle('active'); }
+function toggleDarkMode(){ document.body.classList.toggle('dark'); }
+
+// States & Cities
+const stateCity = {
+"Andhra Pradesh":["Vijayawada","Visakhapatnam","Guntur"], "Assam":["Guwahati","Silchar"], "Bihar":["Patna","Gaya"],
+"Chhattisgarh":["Raipur","Bilaspur"], "Goa":["Panaji","Margao"], "Gujarat":["Ahmedabad","Surat","Vadodara"],
+"Haryana":["Gurugram","Faridabad","Panipat"], "Himachal Pradesh":["Shimla","Dharamshala"], "Jharkhand":["Ranchi","Jamshedpur"],
+"Karnataka":["Bangalore","Mysore","Mangalore"], "Kerala":["Kochi","Thiruvananthapuram","Kozhikode"], "Madhya Pradesh":["Bhopal","Indore","Gwalior"],
+"Maharashtra":["Mumbai","Pune","Nagpur"], "Manipur":["Imphal"], "Meghalaya":["Shillong"], "Mizoram":["Aizawl"], "Nagaland":["Kohima"],
+"Odisha":["Bhubaneswar","Cuttack"], "Punjab":["Amritsar","Ludhiana","Chandigarh"], "Rajasthan":["Jaipur","Udaipur","Jodhpur"],
+"Sikkim":["Gangtok"], "Tamil Nadu":["Chennai","Coimbatore","Madurai"], "Telangana":["Hyderabad","Warangal"], "Tripura":["Agartala"],
+"Uttar Pradesh":["Lucknow","Noida","Kanpur"], "Uttarakhand":["Dehradun","Haridwar"], "West Bengal":["Kolkata","Howrah"]
+};
+document.getElementById("state").addEventListener("change",function(){
+    let cities = stateCity[this.value] || [];
+    let citySelect = document.getElementById("city");
+    citySelect.innerHTML = '<option value="">Select City</option>';
+    cities.forEach(c=>{ let opt=document.createElement("option"); opt.value=c; opt.text=c; citySelect.appendChild(opt); });
+});
+
+// Enable submit if UTR filled
+const utrInput = document.getElementById("utr");
+const submitBtn = document.getElementById("submitBtn");
+utrInput.addEventListener("input", function(){ submitBtn.disabled = this.value.trim()===""; });
+
+// Toggle solo/team fields + QR
+const gameSelect = document.getElementById('gameOption');
+const soloBlock = document.getElementById('soloBlock');
+const teamBlock = document.getElementById('teamBlock');
+const playerName = document.getElementById('playerName');
+const tm1 = document.getElementById('teammate1');
+const tm2 = document.getElementById('teammate2');
+const tm3 = document.getElementById('teammate3');
+const tm4 = document.getElementById('teammate4');
+const qrMap = { "SOLO-15": "QR15.jpg", "BR-200": "QR200.jpg", "CS-100": "QR100.jpg" };
+const qrImg = document.querySelector(".qr-section img");
+const qrText = document.querySelector(".qr-section p");
+
+function setModeForGame() {
+    const val = gameSelect.value;
+    if(val.startsWith('SOLO')) {
+        soloBlock.classList.remove('hidden'); teamBlock.classList.add('hidden');
+        playerName.required = true; tm1.required = tm2.required = tm3.required = tm4.required = false;
+        tm1.value=tm2.value=tm3.value=tm4.value='';
+    } else {
+        soloBlock.classList.add('hidden'); teamBlock.classList.remove('hidden');
+        playerName.required = false; tm1.required = tm2.required = tm3.required = true;
+    }
+    if(qrMap[val]){
+        qrImg.src = qrMap[val]; qrText.innerText = `Scan this QR to pay: ₹${val.split('-')[1]}`;
+        utrInput.placeholder = `Enter UTR Number for ₹${val.split('-')[1]}`;
+    } else {
+        qrImg.src = "QR1.jpg"; qrText.innerText = "Scan this QR to pay:"; utrInput.placeholder = "Enter UTR Number";
+    }
+}
+setModeForGame();
+gameSelect.addEventListener('change', setModeForGame);
+
+// ✅ WhatsApp submission with +91
+document.getElementById("registerForm").addEventListener("submit", function(e){
+    e.preventDefault();
+    const f = this;
+    const squad = f.squad_name.value || "—";
+    const game = f.game_option.value || "—";
+
+    let teammateInfo = '';
+    if(game.startsWith('SOLO')){
+        const player = f.player_name.value || '—';
+        teammateInfo = `Player (Solo): ${player}\n`;
+    } else {
+        const t1 = f.teammate1.value || "—";
+        const t2 = f.teammate2.value || "—";
+        const t3 = f.teammate3.value || "—";
+        const t4 = f.teammate4.value || "—";
+        teammateInfo = `Teammates:\n1) ${t1}\n2) ${t2}\n3) ${t3}\n4) ${t4}\n`;
+    }
+
+    const email = f.email.value || "—";
+    const phone = f.phone.value || "—";
+    const state = f.state.value || "—";
+    const city = f.city.value || "—";
+    const addr = f.address.value || "—";
+    const utr = f.utr.value || "—";
+
+    const body = `
+New Squad Registration
+
+Squad Name: ${squad}
+Game Option: ${game}
+
+${teammateInfo}
+Email: ${email}
+Phone: ${phone}
+State: ${state}
+City: ${city}
+Address: ${addr}
+UTR Number: ${utr}
+`.trim();
+
+    const whatsappNumber = "918780467849"; // ✅ +91 India code
+    const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(body)}`;
+    window.open(whatsappURL, "_blank");
+    alert("📩 WhatsApp khul gaya aapke number pe message ke liye. Bas Send dabana!");
+});
+</script>
+</body>
+</html>
